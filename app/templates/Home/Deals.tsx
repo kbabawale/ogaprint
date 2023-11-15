@@ -45,7 +45,12 @@ const Products = memo<ProductsProps>(
           >
             {tagLabel}
           </div>
-          <Image src={image} objectFit="contain" alt={name} fill={true} />
+          <Image
+            src={image}
+            style={{ objectFit: "contain" }}
+            alt={name}
+            fill={true}
+          />
         </div>
         <span className="mt-1 font-bold text-black text-base font-source">
           {name}
@@ -65,19 +70,18 @@ const Products = memo<ProductsProps>(
 );
 
 function Deals() {
+  const itemsArr = Array(6).fill(items);
   return (
     <div className="flex flex-col items-center w-full">
-      <span className="font-bold text-2xl text-source">Daily Deals</span>
+      <span className="font-bold text-2xl font-source">Daily Deals</span>
       <span className="font-normal text-sm">
         Get awesome discounts and Deals on US
       </span>
 
-      <div className="md:w-[80%] mx-auto mt-10 flex w-full">
-        {Array(6)
-          .fill(items)
-          .map((v) => (
-            <Products {...v} />
-          ))}
+      <div className="overflow-x-scroll md:w-[80%] mx-auto mt-10 flex w-full">
+        {itemsArr.map((v, i) => (
+          <Products key={i} {...v} />
+        ))}
       </div>
     </div>
   );

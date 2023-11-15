@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { ButtonType } from "../util/enum";
+import { ButtonType } from "../../util/enum";
 
 function Jumbrotron() {
   return (
