@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700;1,8..60,800;1,8..60,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  body{
+    @apply text-c-gray-700 text-base font-inter;
+  }
+  label{
+    @apply text-c-gray-900 font-bold text-sm;
+  }
+  .btn-primary{
+    @apply text-center bg-c-sky-blue rounded-md text-white font-bold w-full py-3 hover:bg-c-sky-blue/90 disabled:bg-c-sky-blue/30 disabled:cursor-not-allowed hover:transition ease-in-out;
+  }
+  .btn-alternate{
+    @apply text-center bg-transparent border border-c-gray-200 rounded-md text-c-gray-900 font-bold w-full py-3 hover:bg-c-gray-200/90 disabled:bg-c-gray-200/30 disabled:cursor-not-allowed hover:transition ease-in-out;
+  }
+  .btn-secondary{
+    @apply text-center bg-black border border-c-black rounded-3xl text-white text-sm font-normal w-full px-3 py-2 hover:bg-c-black/90 disabled:bg-c-black/30 disabled:cursor-not-allowed hover:transition ease-in-out;
+  }
+}
