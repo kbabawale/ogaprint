@@ -25,7 +25,7 @@ function Icon({ id, open }: IconProps) {
       <path
         d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
         fill="black"
-        fill-opacity="0.5"
+        fillOpacity="0.5"
       />
     </svg>
   );
@@ -41,7 +41,7 @@ function CustomAccordion() {
           className="font-source font-medium text-base"
           onClick={() => handleOpen(1)}
         >
-          What is Material Tailwind?
+          When do I get my order?
         </AccordionHeader>
         <AccordionBody className="font-inter font-normal text-sm">
           We&apos;re not always in the position that we want to be at.
@@ -55,7 +55,7 @@ function CustomAccordion() {
           className="font-source font-medium text-base"
           onClick={() => handleOpen(2)}
         >
-          How to use Material Tailwind?
+          What is the minimum quantity of prints I can order?
         </AccordionHeader>
         <AccordionBody className="font-inter font-normal text-sm">
           We&apos;re not always in the position that we want to be at.
@@ -69,7 +69,7 @@ function CustomAccordion() {
           className="font-source font-medium text-base"
           onClick={() => handleOpen(3)}
         >
-          What can I do with Material Tailwind?
+          How do I place an order on your website?
         </AccordionHeader>
         <AccordionBody className="font-inter font-normal text-sm">
           We&apos;re not always in the position that we want to be at.

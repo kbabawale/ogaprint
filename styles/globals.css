@@ -21,4 +21,7 @@
   .btn-secondary{
     @apply text-center bg-black border border-c-black rounded-3xl text-white text-sm font-normal w-full px-3 py-2 hover:bg-c-black/90 disabled:bg-c-black/30 disabled:cursor-not-allowed hover:transition ease-in-out;
   }
+  .breadcrumb-link{
+    @apply text-black/50 hover:text-black hover:underline;
+  }
 }

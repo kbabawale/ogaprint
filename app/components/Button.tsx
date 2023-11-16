@@ -36,7 +36,22 @@ const Button = ({
           className={`btn-primary ${extraclass ? extraclass : ""}`}
           type={type}
         >
-          {!loading && <span>{label}</span>}
+          {!loading &&
+            (icon ? (
+              iconPosition === "before" ? (
+                <div>
+                  {<FontAwesomeIcon icon={icon} />}
+                  <span className={`text-09 ms-2`}>{label}</span>
+                </div>
+              ) : (
+                <div>
+                  <span className={`text-09 me-2`}>{label}</span>
+                  {<FontAwesomeIcon icon={icon} />}
+                </div>
+              )
+            ) : (
+              <span>{label}</span>
+            ))}
           {loading && (
             <div className="w-full flex items-center justify-center">
               <Loader width={25} height={25} visible color="#fff" />
@@ -83,7 +98,22 @@ const Button = ({
           className={`btn-alternate ${extraclass ? extraclass : ""}`}
           type={type}
         >
-          {!loading && <span>{label}</span>}
+          {!loading &&
+            (icon ? (
+              iconPosition === "before" ? (
+                <div>
+                  {<FontAwesomeIcon icon={icon} />}
+                  <span className={`text-09 ms-2`}>{label}</span>
+                </div>
+              ) : (
+                <div>
+                  <span className={`text-09 me-2`}>{label}</span>
+                  {<FontAwesomeIcon icon={icon} />}
+                </div>
+              )
+            ) : (
+              <span>{label}</span>
+            ))}
           {loading && (
             <div className="w-full flex items-center justify-center">
               <Loader width={25} height={25} visible color="#fff" />

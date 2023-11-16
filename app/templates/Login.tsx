@@ -50,7 +50,7 @@ function LoginTemplate() {
             <div className="flex-grow border-t border-c-gray-50"></div>
           </div>
           <Button
-            type={ButtonType.ALTERNATE}
+            theme={ButtonType.ALTERNATE}
             click={() => router.push("/auth/signup")}
             loading={load}
             extraclass="mt-5"

@@ -32,6 +32,6 @@ const config: Config = withMT({
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 });
 export default config;

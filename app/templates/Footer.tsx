@@ -56,22 +56,22 @@ function Footer() {
           </span>
           <div className="flex items-center mt-[30px]">
             <FontAwesomeIcon
-              className="text-black/50 pe-3"
+              className="text-black/50 pe-3 hover:text-[#00acee] hover:cursor-pointer"
               fontSize={25}
               icon={faTwitter}
             />
             <FontAwesomeIcon
-              className="text-black/50 px-3"
+              className="text-black/50 px-3 hover:text-[#fccc63] hover:cursor-pointer"
               fontSize={25}
               icon={faInstagram}
             />
             <FontAwesomeIcon
-              className="text-black/50 px-3"
+              className="text-black/50 px-3 hover:text-[#1877F2] hover:cursor-pointer"
               fontSize={25}
               icon={faFacebook}
             />
             <FontAwesomeIcon
-              className="text-black/50 px-3"
+              className="text-black/50 px-3 hover:text-[#0077b5] hover:cursor-pointer"
               fontSize={25}
               icon={faLinkedin}
             />

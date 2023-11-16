@@ -9,6 +9,10 @@ type ProductsProps = {
   description: string;
   price: number;
 };
+type Props = {
+  titlePosition?: "left" | "center";
+  productCount?: number;
+};
 
 const items: ProductsProps = {
   id: Date.now(),
@@ -54,11 +58,15 @@ const Products = memo<ProductsProps>(
   }
 );
 
-function Trending() {
-  const itemsArr = Array(6).fill(items);
+function Trending({ productCount = 6, titlePosition = "center" }: Props) {
+  const itemsArr = Array(productCount).fill(items);
   return (
     <div className="flex flex-col items-center w-[90%] md:w-[60%] mx-auto">
-      <span className="font-bold text-2xl font-source self-start">
+      <span
+        className={`font-bold text-2xl font-source ${
+          titlePosition === "center" ? "self-center" : "self-start"
+        }`}
+      >
         Trending Products
       </span>
 

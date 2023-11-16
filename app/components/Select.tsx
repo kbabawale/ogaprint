@@ -5,18 +5,22 @@ import { SelectControlOptions } from "../util/model";
 type AppProps<T> = {
   options: SelectControlOptions<T>[];
   error?: boolean;
+  placeholder?: string;
   disabled?: boolean;
   errorMessage?: string;
   customStyles?: CSSProperties;
   value?: T;
+  extraClass?: string;
   extraTypeAttributes?: InputHTMLAttributes<unknown>[];
   onChange?: (event: React.KeyboardEvent<HTMLSelectElement>) => void;
 };
 
 const Input = ({
   error,
+  placeholder = "Select One:",
   options,
   errorMessage,
+  extraClass,
   disabled,
   customStyles,
   extraTypeAttributes,
@@ -30,7 +34,9 @@ const Input = ({
   return (
     <div className="flex flex-col justify-start">
       <select
-        className={`w-full mt-2 px-3 py-2.5 rounded-lg border border-c-gray-200 ${
+        className={`${
+          extraClass && extraClass
+        } w-full placeholder:text-black/40 mt-2 px-3 py-2.5 rounded-lg border border-c-gray-200 ${
           error ? "border-c-red border" : ""
         } ${disabled ? "cursor-not-allowed" : ""}`}
         disabled={disabled}
@@ -39,7 +45,7 @@ const Input = ({
         onChange={onChange}
         style={customStyles}
       >
-        <option value="">Select One:</option>
+        <option value="">{placeholder}</option>
         {options &&
           options.length > 0 &&
           options.map((option) => (
