@@ -5,19 +5,14 @@ import Link from "next/link";
 import React from "react";
 import Button from "../components/Button";
 import { ButtonType } from "../util/enum";
+import { useRouter } from "next/router";
 
 function Header() {
+  const router = useRouter();
   return (
     <header className="shadow-xl md:shadow-none px-3 md:px-0 w-full md:w-[75%] md:border-none pb-2 pt-2 mx-auto flex flex-col">
       {/* First Layer */}
       <div className="py-2 flex items-center justify-between">
-        {/* <button>
-          <FontAwesomeIcon
-            className="md:hidden pe-3"
-            fontSize="1.5rem"
-            icon={faBars}
-          />
-        </button> */}
         <div className="w-[200px]">
           <Image alt="" width="150" height="150" src={"/logo.svg"} />
         </div>
@@ -62,6 +57,7 @@ function Header() {
 
         <div className="">
           <Button
+            click={() => router.push("/auth")}
             iconPosition="before"
             icon={faUser}
             theme={ButtonType.SECONDARY}

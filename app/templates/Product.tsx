@@ -8,11 +8,12 @@ import Trending from "./Util/Trending";
 import Select from "../components/Select";
 import AltRadio from "../components/AltRadio";
 import Button from "../components/Button";
+import { useRouter } from "next/router";
 
 function ProductsTemplate() {
   const images = ["/stock1.svg", "/stock2.svg", "/stock3.svg", "/stock4.svg"];
   const [slideImage, setSlideImage] = useState<string>(images[0]);
-
+  const router = useRouter();
   const radioGroup: {
     title: string;
     price: number;
@@ -167,7 +168,11 @@ function ProductsTemplate() {
                 </div>
               </form>
             </div>
-            <Button extraclass="mt-5 text-sm font-medium" label="Order now" />
+            <Button
+              click={() => router.push("/design")}
+              extraclass="mt-5 text-sm font-medium"
+              label="Order now"
+            />
           </div>
         </div>
       </div>

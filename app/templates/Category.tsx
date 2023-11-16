@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import { Breadcrumb } from "../components/Breadcrumb";
 import Item, { ItemProps } from "./Util/Item";
 import CategoryDrawer from "./Util/CategoryDrawer";
+import { useRouter } from "next/router";
 
 export type Categories = {
   name: string;
@@ -57,6 +58,7 @@ const _categories: Categories[] = [
 ];
 
 function CategoryTemplate() {
+  const router = useRouter();
   const itemsArr = Array(30).fill(items);
   return (
     <div className="flex flex-col w-screen">
@@ -99,6 +101,7 @@ function CategoryTemplate() {
                 showCTA={true}
                 showPrice={false}
                 key={i}
+                onclick={() => router.push("/product")}
               />
             ))}
           </div>

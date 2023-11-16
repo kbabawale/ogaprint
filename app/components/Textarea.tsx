@@ -35,7 +35,9 @@ const Textarea = ({
   return (
     <div className="flex flex-col justify-start">
       <textarea
-        className={`${extraClass} mt-2 px-3 py-2 rounded-lg border border-c-gray-200 ${
+        className={`${
+          extraClass && extraClass
+        } mt-2 px-3 py-2 rounded-lg border border-c-gray-200 ${
           error ? "border-c-red border" : ""
         }`}
         disabled={disabled}

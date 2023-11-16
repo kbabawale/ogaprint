@@ -38,6 +38,9 @@ function LoginTemplate() {
             <Button
               click={() => {
                 setLoad(!load);
+                setTimeout(() => {
+                  router.push("/");
+                }, 3000);
               }}
               loading={load}
               extraclass="mt-5"

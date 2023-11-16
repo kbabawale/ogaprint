@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, Fragment, useState } from "react";
 import Header from "./Header";
 import Faq from "./Util/Faq";
 import Footer from "./Footer";
@@ -8,10 +8,11 @@ import Modal from "../components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClose,
-  faExclamation,
   faExclamationTriangle,
+  faFileImage,
   faUpload,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
 type BoxProps = {
   ctaLabel: string;
@@ -53,13 +54,23 @@ const Box = ({ ctaLabel, icon, title, subtitle, clickFn }: BoxProps) => {
 };
 
 function DesignTemplate() {
+  const router = useRouter();
   const [modal, setModal] = useState<boolean>(false);
+  const [file, setFile] = useState<FileList>();
+  const [stage, setStage] = useState<number>(0);
   const handleOpen = () => setModal(!modal);
 
   const inputFile = React.useRef<HTMLInputElement>(null);
 
   const openFileUploadDialog = () => {
     inputFile.current?.click();
+  };
+
+  const changeHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files);
+      setStage(1);
+    }
   };
 
   return (
@@ -114,41 +125,67 @@ function DesignTemplate() {
                   />
                 </div>
               </div>
-              <div className="mt-5 rounded-lg border-2 py-[50px] border-dashed bg-black/5 border-black/20 w-full flex flex-col">
-                <FontAwesomeIcon
-                  className="mb-5"
-                  fontSize={20}
-                  icon={faUpload}
-                />
-                <div className="text-center text-sm w-full text-black/70">
-                  Drag and drop to upload or click{" "}
-                  <span
-                    onClick={openFileUploadDialog}
-                    className="text-c-sky-blue hover:cursor-pointer hover:underline font-medium"
-                  >
-                    here
-                  </span>{" "}
-                  to <br /> select a file from your system
-                </div>
-              </div>
-              <div className="p-3 mt-5 bg-c-yellow rounded-lg flex items-center">
-                <FontAwesomeIcon
-                  icon={faExclamationTriangle}
-                  fontSize={25}
-                  color="#000000"
-                />
-                <span className="text-black/70 text-sm ms-5">
-                  Files types are limited to PNG, JPG, AI. and a maximum file
-                  size of 15MB Max
-                </span>
-              </div>
-              <input
-                type="file"
-                accept="application/pdf, image/png, image/gif, image/jpeg"
-                id="file"
-                ref={inputFile}
-                className="invisible"
-              />
+
+              {stage === 0 && (
+                <Fragment>
+                  <div className="mt-5 rounded-lg border-2 py-[50px] border-dashed bg-black/5 border-black/20 w-full flex flex-col">
+                    <FontAwesomeIcon
+                      className="mb-5"
+                      fontSize={20}
+                      icon={faUpload}
+                    />
+                    <div className="text-center text-sm w-full text-black/70">
+                      Drag and drop to upload or click{" "}
+                      <span
+                        onClick={openFileUploadDialog}
+                        className="text-c-sky-blue hover:cursor-pointer hover:underline font-medium"
+                      >
+                        here
+                      </span>{" "}
+                      to <br /> select a file from your system
+                    </div>
+                  </div>
+                  <div className="p-3 mt-5 bg-c-yellow rounded-lg flex items-center">
+                    <FontAwesomeIcon
+                      icon={faExclamationTriangle}
+                      fontSize={25}
+                      color="#000000"
+                    />
+                    <span className="text-black/70 text-sm ms-5">
+                      Files types are limited to PNG, JPG, AI. and a maximum
+                      file size of 15MB Max
+                    </span>
+                  </div>
+                  <input
+                    type="file"
+                    accept="application/pdf, image/png, image/gif, image/jpeg"
+                    id="file"
+                    ref={inputFile}
+                    className="invisible"
+                    onChange={changeHandler}
+                  />
+                </Fragment>
+              )}
+              {stage === 1 && (
+                <Fragment>
+                  <div className="mt-5 rounded-lg border-2 py-[50px] border-dashed bg-black/5 border-black/20 w-full flex flex-col">
+                    <FontAwesomeIcon
+                      className="mb-5"
+                      fontSize={20}
+                      color="#000"
+                      icon={faFileImage}
+                    />
+                    <div className="text-center text-sm w-full text-black/70">
+                      {file ? file[0].name : "File not found"}
+                    </div>
+                  </div>
+                  <Button
+                    click={() => router.push("/design-2")}
+                    label="Submit"
+                    extraclass="mt-5 text-sm"
+                  />
+                </Fragment>
+              )}
             </div>
           }
           control={modal}

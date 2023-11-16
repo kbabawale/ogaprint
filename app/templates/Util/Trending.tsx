@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import Image from "next/image";
 import Button from "@/app/components/Button";
+import { useRouter } from "next/router";
 
 type ProductsProps = {
   id: number;
@@ -8,6 +9,7 @@ type ProductsProps = {
   name: string;
   description: string;
   price: number;
+  click?: () => void;
 };
 type Props = {
   titlePosition?: "left" | "center";
@@ -24,7 +26,7 @@ const items: ProductsProps = {
 };
 
 const Products = memo<ProductsProps>(
-  ({ image, name, description, price }: ProductsProps) => {
+  ({ image, name, description, price, click }: ProductsProps) => {
     return (
       <div className="basis-full md:basis-1/3 p-2 mb-[2rem] md:mb-0">
         <div className="flex flex-col">
@@ -49,6 +51,7 @@ const Products = memo<ProductsProps>(
             <span className="text-lg font-bold font-source">₦{price}</span>
           </div>
           <Button
+            click={click}
             extraclass="mt-4 border border-black py-2 font-medium text-sm"
             label="Customize your order"
           />
@@ -59,6 +62,7 @@ const Products = memo<ProductsProps>(
 );
 
 function Trending({ productCount = 6, titlePosition = "center" }: Props) {
+  const router = useRouter();
   const itemsArr = Array(productCount).fill(items);
   return (
     <div className="flex flex-col items-center w-[90%] md:w-[60%] mx-auto">
@@ -72,7 +76,7 @@ function Trending({ productCount = 6, titlePosition = "center" }: Props) {
 
       <div className="flex-wrap mx-auto mt-10 flex w-full">
         {itemsArr.map((v, i) => (
-          <Products key={i} {...v} />
+          <Products key={i} click={() => router.push("/design")} {...v} />
         ))}
       </div>
     </div>
