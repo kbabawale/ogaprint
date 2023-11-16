@@ -11,7 +11,7 @@ function HomeTemplate() {
   return (
     <div className="flex flex-col w-screen">
       <Header />
-      <div className="my-5">
+      <div className="mt-2 md:my-5">
         <Jumbrotron />
       </div>
       <div className="py-[5rem]">

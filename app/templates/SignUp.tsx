@@ -2,7 +2,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { ButtonType } from "../util/enum";
 import { useRouter } from "next/router";
 import Select from "../components/Select";
 import Textarea from "../components/Textarea";
@@ -122,9 +121,10 @@ function SignUpTemplate() {
               </label>
             </div>
             <Button
-              type="submit"
+              type="button"
               click={() => {
                 setLoad(!load);
+                router.push("/");
               }}
               loading={load}
               extraclass="mt-5"

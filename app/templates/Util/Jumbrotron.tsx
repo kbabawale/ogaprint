@@ -16,7 +16,7 @@ function Jumbrotron() {
             Get 20% off when gifting with our special <br /> mothers’ day cards
             campaign
           </span>
-          <div className="mt-5 w-[30%]">
+          <div className="mt-5 w-[35%]">
             <Button
               iconPosition="after"
               icon={faArrowRight}

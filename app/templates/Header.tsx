@@ -13,7 +13,7 @@ function Header() {
     <header className="shadow-xl md:shadow-none px-3 md:px-0 w-full md:w-[75%] md:border-none pb-2 pt-2 mx-auto flex flex-col">
       {/* First Layer */}
       <div className="py-2 flex items-center justify-between">
-        <div className="w-[200px]">
+        <div onClick={() => router.push("/")} className="w-[200px]">
           <Image alt="" width="150" height="150" src={"/logo.svg"} />
         </div>
         <div className="hidden md:block mx-3 grow relative">
